@@ -386,6 +386,7 @@ sub prepareObjects {
     
         chomp(($fileObject{src})        = $file);
         chomp(($fileObject{base})       = $file);
+        chomp(($fileObject{ext})	= $ext);
         $fileObject{base}               =~ s/\.[^\.]*$//;
     
         chomp(($fileObject{make})       = $file_make =~ /: ([^\n\r]*)/);
@@ -478,7 +479,7 @@ sub prepareObjects {
         
     foreach $fileObject (@objects) {
         if($fileObject->{isOk}){
-            $fileObject->{step_0_resizedImage}  = "$jobOptions{jobDir}/$fileObject->{base}.jpg";
+            $fileObject->{step_0_resizedImage}  = "$jobOptions{jobDir}/$fileObject->{base}.{ext}";
             
             $fileObject->{step_1_pgmFile}       = "$jobOptions{jobDir}/$fileObject->{base}.pgm";
             $fileObject->{step_1_keyFile}       = "$jobOptions{jobDir}/$fileObject->{base}.key";
