@@ -683,10 +683,10 @@ sub bundler {
     foreach $fileObject (@objects) {
         if($fileObject->{isOk}){
             if($fileObject->{isOk}){
-                if (-e "pmvs/$fileObject->{base}.rd.jpg"){
+                if (-e "pmvs/$fileObject->{base}.rd.{ext}"){
                     $nr = sprintf("%08d", $i++);
                 
-                    system("mv pmvs/$fileObject->{base}.rd.jpg pmvs/visualize/$nr.jpg");
+                    system("mv pmvs/$fileObject->{base}.rd.{ext} pmvs/visualize/$nr.{ext}");
                     system("mv pmvs/$nr.txt pmvs/txt/$nr.txt");
                 }
             }
