@@ -386,7 +386,6 @@ sub prepareObjects {
     
         chomp(($fileObject{src})        = $file);
         chomp(($fileObject{base})       = $file);
-        chomp(($fileObject{ext})	= `echo $file |awk -F . '{if (NF>1) {print $NF}}'`);
         $fileObject{base}               =~ s/\.[^\.]*$//;
     
         chomp(($fileObject{make})       = $file_make =~ /: ([^\n\r]*)/);
@@ -479,8 +478,8 @@ sub prepareObjects {
         
     foreach $fileObject (@objects) {
         if($fileObject->{isOk}){
+     	    chomp(($fileObject{ext})	= `echo $file |awk -F . '{if (NF>1) {print $NF}}'`);
             $fileObject->{step_0_resizedImage}  = "$jobOptions{jobDir}/$fileObject->{base}.{ext}";
-            
             $fileObject->{step_1_pgmFile}       = "$jobOptions{jobDir}/$fileObject->{base}.pgm";
             $fileObject->{step_1_keyFile}       = "$jobOptions{jobDir}/$fileObject->{base}.key";
             $fileObject->{step_1_gzFile}        = "$jobOptions{jobDir}/$fileObject->{base}.key.gz";
