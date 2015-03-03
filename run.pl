@@ -386,7 +386,7 @@ sub prepareObjects {
     
         chomp(($fileObject{src})        = $file);
         chomp(($fileObject{base})       = $file);
-        chomp(($fileObject{ext})	= $(echo $file |awk -F . '{if (NF>1) {print $NF}}'));
+        chomp(($fileObject{ext})	= `echo $file |awk -F . '{if (NF>1) {print $NF}}'`
         $fileObject{base}               =~ s/\.[^\.]*$//;
     
         chomp(($fileObject{make})       = $file_make =~ /: ([^\n\r]*)/);
